@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   
   # URLが xxxx.com/ でアクセスされたときにtasksコントローラのindexメソッドに処理を渡す
   root to: 'tasks#index'
+  
+  root to: 'user#index'
 
   # resourcesはよくあるルーティングのセットをひとまとめに定義できるメソッド
   # tasksモデルに関する一連のルーティングを定義している
   resources :tasks
+  
 end
