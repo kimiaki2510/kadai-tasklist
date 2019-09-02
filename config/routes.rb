@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root to: 'tasks#index'
   
   root to: 'user#index'
-
+  
+  get 'signup', to: 'users#new'
+  resources :users, only: [:index, :show, :new, :create]
   # resourcesはよくあるルーティングのセットをひとまとめに定義できるメソッド
   # tasksモデルに関する一連のルーティングを定義している
   resources :tasks
