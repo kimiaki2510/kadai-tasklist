@@ -8,7 +8,6 @@ class TasksController < ApplicationController
         @task = Task.new
     end
     
-    
     def create
         @task = current_user.tasks.build(task_params)
         if @task.save
