@@ -4,6 +4,7 @@ class TasksController < ApplicationController
         @tasks = Task.order(id: :desc).page(params[:page]).per(3)
     end
     
+    
     def new
         @task = Task.new
     end
