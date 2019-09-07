@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
     #emailとpasswordでログイン可能
     if login(email, password)
       flash[:success] = 'ログインに成功しました。'
-      #@userのusers#showへリダイレクト
-      redirect_to @user
+      #@taskのroot_urlへリダイレクト
+      #redirect_to root_url
+      redirect_to root_url
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       #sessions/new.html.erbを再表示
@@ -24,9 +25,10 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
   
-  #login(email, passsword)の定義
+ 
   private
-
+  
+ #login(email, passsword)の定義
   def login(email, password)
     @user = User.find_by(email: email)
     #@userが存在するか@userのパスワードが合っているか
