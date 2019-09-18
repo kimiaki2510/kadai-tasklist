@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     before_action :require_user_logged_in
     before_action :set_task, only: [:show, :edit, :update, :destroy]
-    before_action :correct_user, only: [:edit, :update, :show, :destroy]
+    #before_action :correct_user, only: [:edit, :update, :show, :destroy]
     
     def index
         @tasks = current_user.tasks.page(params[:page]).per(3)
@@ -24,9 +24,6 @@ class TasksController < ApplicationController
     end
     
     def edit
-        if current_user == @user
-            redirect_to root_url
-        end
         set_task
     end
     
@@ -49,7 +46,11 @@ class TasksController < ApplicationController
     end
     
     def show
-        set_task
+        if current_user == @task.user
+            set_task
+        else
+            redirect_to root_url
+        end
     end
     
     private
@@ -62,11 +63,11 @@ class TasksController < ApplicationController
         params.require(:task).permit(:content, :status)
     end
     
-    def correct_user
-        @task = Task.find(params[:id])
-        if current_user.id = @task.user.id
-            redirect_to root_url
-        end
-    end
+    #def correct_user
+        #@task = Task.find(params[:id])
+        #if current_user.id = @task.user.id
+            #redirect_to root_url
+        #end
+    #end
     
 end
