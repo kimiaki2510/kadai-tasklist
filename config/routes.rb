@@ -10,11 +10,8 @@ Rails.application.routes.draw do
   
   # URLが xxxx.com/ でアクセスされたときにtasksコントローラのindexメソッドに処理を渡す
   root to: 'tasks#index'
-
-  
   get 'signup', to: 'users#new'
-  #resources :users, only: [:index, :show, :new, :create]
-  resources :users, only: [:new, :create]
+  
   # resourcesはよくあるルーティングのセットをひとまとめに定義できるメソッド
   # tasksモデルに関する一連のルーティングを定義している
   resources :tasks
