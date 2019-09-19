@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  #resources :users, only: [:index, :show, :new, :create]
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create]
   
   # URLが xxxx.com/ でアクセスされたときにtasksコントローラのindexメソッドに処理を渡す
   root to: 'tasks#index'
